@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fish Shop</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+     /* Custom Navbar Style */
+  .navbar {
+    border-radius: 6px;
+	background-image: linear-gradient(
+		rgb(48, 48, 48) 13%,
+		rgb(30, 30, 30) 40%,
+		#0c0d11 86%
+	);
+	color: rgba(255, 255, 255, 0.6);
+	text-shadow: 0 -2px 0 black;
+	cursor: pointer;
+	box-shadow: 1px 2px 4px rgb(20, 20, 20), 0 4px 12px rgb(10, 10, 10);
+  }
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: italic;
+  }
+
+  .navbar-nav {
+    border-radius: 6px;
+	background-image: linear-gradient(
+		rgb(48, 48, 48) 13%,
+		rgb(30, 30, 30) 40%,
+		#0c0d11 86%
+	);
+	color: rgba(255, 255, 255, 0.6);
+	text-shadow: 0 -2px 0 black;
+	cursor: pointer;
+	box-shadow: 1px 2px 4px rgb(20, 20, 20), 0 4px 12px rgb(10, 10, 10);
+
+  }
+
+  .nav-item {
+    margin: 0 10px;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    color: white !important; 
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #ffc107 !important; 
+  }
+
+  .navbar-toggler-icon {
+    background-color: white; 
+  }
+  a {
+    padding: 0;
+  }
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; 
+    color: #343a40; 
+  }
+
+
+  section {
+    padding: 40px 0;
+  }
+
+  footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  #gallery {
+    background-color: #65a5dd; 
+    padding: 80px 0;
+  }
+
+  #gallery h2 {
+    color: #ffffff;
+  }
+
+  .card {
+    border: none;
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card-img-top {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #30c9f8;
+  }
+
+  .card-text {
+    color: #000000;
+  }
+
+  .btn-primary {
+    background-color: #003366;
+    border-color: #003366;
+  }
+
+  .btn-primary:hover {
+    background-color: #001a33;
+    border-color: #001a33;
+  }
+
+  .text-decoration-underline {
+    text-decoration: underline;
+  }
+  
+
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href={% url 'index' %}>Fish Shop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">Home</a>
+      </li>
+    {% if not user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href={% url 'login' %}>Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href={% url 'register' %}>Register</a>
+      </li>
+    {% endif %}
+        {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href={% url 'logout' %}>Logout</a>
+      </li>
+
+      <li class="nav-item">
+        <p class="nav-link">Hello {{ user.username }}!</p>
+      </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

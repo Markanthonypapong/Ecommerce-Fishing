@@ -1,0 +1,118 @@
+{% extends 'fishapp/base.html' %}
+
+{% block content %}
+<style>
+ 
+
+  
+  #featured {
+      background-color: #f8f9fa; 
+      padding: 60px 0; 
+  }
+
+  #featured h2 {
+      color: #343a40; 
+  }
+
+  #featured p {
+      color: #6c757d; 
+  }
+
+  .card {
+      border: none;
+      transition: transform 0.5s ease;
+  }
+
+  .card:hover {
+      transform: scale(1.05);
+  }
+
+  .card-img-top {
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+  }
+
+  .card-title {
+      font-size: 2rem;
+      margin-top: 10px;
+      color: #007bff; 
+  }
+
+  .card-text {
+      color: #6c757d; 
+  }
+
+  .btn-primary {
+      background-color: #007bff; 
+      border-color: #007bff;
+      color: #fff; 
+  }
+
+.btn-primary:hover {
+      background-color: #0056b3; 
+      border-color: #0056b3;
+}
+#sale-section {
+  background-color: #f8f9fa; 
+  padding: 60px 0; 
+  background-image: url('/data/background.jpg');
+  background-size: cover; 
+  background-position: center; 
+  color: #ffffff; 
+}
+
+#sale-section h2 {
+  color: #ffffff; 
+  font-size: 2.5rem;
+  margin-bottom: 30px; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+}
+
+</style>
+
+<section id="featured" class="py-5 text-center bg-light">
+  <div class="container">
+      <h2 class="display-4">Featured Fishing Rod</h2>
+      <p class="lead">Discover our latest and greatest fishing rod!</p>
+
+      <div class="row">
+          <div class="col-md-8 offset-md-2">
+              <div class="card">
+                <img src="{{ MEDIA_URL }}data/asd123.jpg" alt="Featured Fish" class="card-img-top img-fluid">
+                <div class="card-body">
+                    <h5 class="card-title">Featured Rod Name</h5>
+                    <p class="card-text">Experience the ultimate fishing adventure with our featured fishing rod. It's designed for both beginners and seasoned anglers, offering unmatched performance and durability.</p>
+                    <a class="btn btn-primary" href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="sale-section" class="py-5">
+  <div class="container">
+    <h2 class="text-center">Fishing Rod</h2>
+    <div class="row">
+
+        {% for fish in fishs %}
+            <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ MEDIA_URL }}{{ fish.image.url }}" alt="Fish 3" class="card-img-top img-fluid" style="height: 18rem">
+            <div class="card-body">
+                <h5 class="card-title">{{ fish.name }}</h5>
+                <p class="card-text">Explore the underwater world with our amazing collection of fishes. Each fish has its own unique charm and characteristics. Dive into the beauty of FishOnline!</p>
+                <a class="btn btn-primary" href={% url 'details' fish.id %}>Check out</a>
+                <p class="h3 text-decoration-underline float-right" >₱{{ fish.price }}</p>
+            </div>
+            </div>
+            </div>
+        {% endfor %}
+        
+    </div>
+  </div>
+</section>
+{% endblock %}

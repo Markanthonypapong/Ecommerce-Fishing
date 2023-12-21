@@ -1,0 +1,30 @@
+/* custom_admin.css */
+
+/* Example styling for the admin header */
+#branding h1 a {
+    color: #333;
+}
+
+#branding h1 a:hover {
+    color: #555;
+}
+
+/* Example styling for the admin sidebar */
+#sidebar {
+    background-color: #f8f9fa;
+}
+
+#sidebar a {
+    color: #007bff;
+}
+
+#sidebar a:hover {
+    color: #0056b3;
+}
+
+/* Example styling for the admin content area */
+.content-container {
+    background-color: #fff;
+}
+
+/* Add more styles as needed */
